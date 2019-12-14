@@ -1,6 +1,6 @@
 # FEEDBACK FORM LOOP
 
-This is a feedback form loop that inputs rating feedback and comments and saves it into a database. 
+This is a feedback form loop that inputs rating, comments feedbacks and saves it into a database. 
 with admin page to manage all feedbacks. 
 
 1. click on "leave new feedback" to start feedback form loop
