@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 // MATERIAL-UI
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 class Feeling extends Component {
+
+    state = {
+        feeling: '',
+    }
+
+    changeField = (event, infoKey) => {
+        this.setState({
+            [infoKey]: event.target.value
+        });
+        console.log(this.state);
+    }
+
+    submit = (event) => {
+        this.props.dispatch({
+            type: 'ADD_FEELING',
+            payload: this.state,
+        });
+
+        this.props.history.push('/understanding');
+    }
+
     render() {
         return (
             <div className="App">
@@ -12,10 +34,13 @@ class Feeling extends Component {
             </header>
             <h1>How are you feeling today?</h1>
             <br />
-            <Button variant="contained" color="primary">Next</Button>
+            <label> Feeling? "Insert number from 1-5"
+            <input type="number" onChange={(event) => this.changeField(event, 'feeling')} />
+            </label>
+            <Button variant="contained" color="primary" onClick={this.submit}>Next</Button>
           </div>
         );
     }
 }
 
-export default Feeling;
+export default connect()(Feeling);
