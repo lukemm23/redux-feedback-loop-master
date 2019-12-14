@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
 // MATERIAL-UI
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 class Comments extends Component {
+
+    state = {
+        comments: '',
+    }
+
+    changeField = (event, infoKey) => {
+        this.setState({
+            [infoKey]: event.target.value
+        });
+        console.log(this.state);
+    }
+
+    submit = (event) => {
+        this.props.dispatch({
+            type: 'ADD_COMMENTS',
+            payload: this.state,
+        });
+        this.props.history.push('/review');
+    }
+
     render() {
         return (
             <div className="App">
@@ -12,10 +33,13 @@ class Comments extends Component {
             </header>
             <h1>Any comments you want to leave?</h1>
             <br />
-            <Button variant="contained" color="primary">Next</Button>
+            <label> Comments "Insert number from 1-5"
+            <input type="text" onChange={(event) => this.changeField(event, 'comments')} />
+            </label>
+            <Button variant="contained" color="primary" onClick={this.submit}>Next</Button>
           </div>
         );
     }
 }
 
-export default Comments;
+export default connect()(Comments);

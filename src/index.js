@@ -41,6 +41,11 @@ const formReducer = (state = defaultState, action) => {
             ...state,
             ...action.payload
         }
+    }else if (action.type === 'ADD_COMMENTS') {
+        return {
+            ...state,
+            ...action.payload
+        }
     }
     return state;
 }

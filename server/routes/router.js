@@ -17,5 +17,22 @@ router.get('/', (req, res) => {
     });
 })
 
+router.post('/', (req, res) => {
+    const newFeedback = req.body;
+    console.log(newFeedback);
+
+    const queryString = `INSERT INTO "feedback" (feeling, understanding, support, comments) VALUES
+    ('${newFeedback.feeling}', '${newFeedback.understanding}', '${newFeedback.support}', '${newFeedback.comments}');`;
+
+    pool.query(queryString)
+        .then((response) => {
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
+
 
 module.exports = router;

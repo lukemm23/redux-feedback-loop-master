@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 class Support extends Component {
     state = {
-        understanding: '',
+        support: '',
     }
 
     changeField = (event, infoKey) => {
@@ -32,7 +32,7 @@ class Support extends Component {
             </header>
             <h1>How well are you being supported?</h1>
             <br />
-            <label> Understanding? "Insert number from 1-5"
+            <label> Support? "Insert number from 1-5"
             <input type="number" onChange={(event) => this.changeField(event, 'support')} />
             </label>
             <Button variant="contained" color="primary" onClick={this.submit}>Next</Button>
