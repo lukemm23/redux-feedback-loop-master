@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import axios from 'axios';
+// MATERIAL-UI
+import Button from '@material-ui/core/Button';
 
 class Admin extends Component {
 
@@ -26,6 +28,20 @@ class Admin extends Component {
             })
     }
 
+    deleteFB = (event, id) => {
+        axios({
+            method: 'DELETE',
+            url: '/api/feedback/' + id
+        })
+            .then((response) => {
+                console.log(response);
+                this.getFeedback();
+            })
+            .catch((error) => {
+                console.warn(error);
+            })
+    }
+
     render() {
         const feedbackArr = this.props.store.feedbackReducer.map((item, index) => {
             return (
@@ -34,6 +50,14 @@ class Admin extends Component {
                     <td>{item.understanding}</td>
                     <td>{item.support}</td>
                     <td>{item.comments}</td>
+                    <td>
+                        <Button 
+                        variant="contained" 
+                        color="primary" 
+                        onClick={(event)=>this.deleteFB(event, item.id)}>
+                            Delete
+                        </Button>
+                    </td>
                 </tr>
             )
         });

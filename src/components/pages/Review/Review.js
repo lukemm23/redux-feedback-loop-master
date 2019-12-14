@@ -20,7 +20,6 @@ class Review extends Component {
             data: newFeedback
           })
             .then((response) => {
-              alert('feedback submitted!');
               this.props.history.push('/thankYou');
             })
             .catch((err) => {
