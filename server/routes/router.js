@@ -8,13 +8,13 @@ const pool = require('../modules/pool');
 router.get('/', (req, res) => {
     // Find all feedbacks and return them
     pool.query('SELECT * FROM "feedback";')
-    .then((result) => {
-        res.send(result.rows);
-    })
-    .catch((error) => {
-        console.log('Error GET', error);
-        res.sendStatus(500);  
-    });
+        .then((result) => {
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log('Error GET', error);
+            res.sendStatus(500);
+        });
 })
 
 // POST feedback submitted, add to DB
@@ -35,14 +35,15 @@ router.post('/', (req, res) => {
         });
 });
 
+//DELETE feedback from admin page to DB
 router.delete('/:id', (req, res) => {
     pool.query('DELETE FROM "feedback" WHERE id=$1', [req.params.id])
-    .then((result) => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        console.log('Error DELETE /api/feedback', error);
-        res.sendStatus(500);
-    })
+        .then((result) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('Error DELETE /api/feedback', error);
+            res.sendStatus(500);
+        })
 });
 
 

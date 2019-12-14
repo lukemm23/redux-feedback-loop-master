@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 
 class Understanding extends Component {
 
+    // local understanding tracker
     state = {
         understanding: '',
     }
 
+    //input tracker for understanding 
     changeField = (event, infoKey) => {
         this.setState({
             [infoKey]: event.target.value
@@ -16,6 +18,7 @@ class Understanding extends Component {
         console.log(this.state);
     }
 
+    //dispatch understanding to formReducer
     submit = (event) => {
         this.props.dispatch({
             type: 'ADD_UNDERSTANDING',

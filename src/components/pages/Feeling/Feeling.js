@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 
 class Feeling extends Component {
 
+    //local feeling tracker
     state = {
         feeling: '',
     }
 
+    //input tracker for feeling
     changeField = (event, infoKey) => {
         this.setState({
             [infoKey]: event.target.value
@@ -16,6 +18,7 @@ class Feeling extends Component {
         console.log(this.state);
     }
 
+    //dispatch feeling to formReducer
     submit = (event) => {
         this.props.dispatch({
             type: 'ADD_FEELING',
@@ -28,17 +31,17 @@ class Feeling extends Component {
     render() {
         return (
             <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">Feedback!</h1>
-              <h4><i>Don't forget it!</i></h4>
-            </header>
-            <h1>How are you feeling today?</h1>
-            <br />
-            <label> Feeling? "Insert number from 1-5"
+                <header className="App-header">
+                    <h1 className="App-title">Feedback!</h1>
+                    <h4><i>Don't forget it!</i></h4>
+                </header>
+                <h1>How are you feeling today?</h1>
+                <br />
+                <label> Feeling? "Insert number from 1-5"
             <input type="number" onChange={(event) => this.changeField(event, 'feeling')} />
-            </label>
-            <Button variant="contained" color="primary" onClick={this.submit}>Next</Button>
-          </div>
+                </label>
+                <Button variant="contained" color="primary" onClick={this.submit}>Next</Button>
+            </div>
         );
     }
 }

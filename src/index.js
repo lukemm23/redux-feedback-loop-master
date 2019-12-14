@@ -7,9 +7,9 @@ import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-
+//DB all feedbacks GET to display on admin page
 const feedbackReducer = (state = [], action) => {
-    if(action.type === 'GET_FEEDBACK') {
+    if (action.type === 'GET_FEEDBACK') {
         return [
             ...action.payload,
         ]
@@ -17,16 +17,18 @@ const feedbackReducer = (state = [], action) => {
     return state;
 }
 
+// default state for formReducer store feedback to POST
 const defaultState = {
     feeling: "",
     understanding: "",
     support: "",
     comments: "",
-    date:""
+    date: ""
 };
 
+//redux store defaultState to POST from form pages
 const formReducer = (state = defaultState, action) => {
-    if(action.type === 'ADD_FEELING') {
+    if (action.type === 'ADD_FEELING') {
         return {
             ...state,
             ...action.payload
@@ -36,12 +38,12 @@ const formReducer = (state = defaultState, action) => {
             ...state,
             ...action.payload
         }
-    }else if (action.type === 'ADD_SUPPORT') {
+    } else if (action.type === 'ADD_SUPPORT') {
         return {
             ...state,
             ...action.payload
         }
-    }else if (action.type === 'ADD_COMMENTS') {
+    } else if (action.type === 'ADD_COMMENTS') {
         return {
             ...state,
             ...action.payload
