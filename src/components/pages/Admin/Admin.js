@@ -45,7 +45,7 @@ class Admin extends Component {
                 </header>
                 <br />
                 <h1>Feedback Results</h1>
-                <table>
+                <table className="App">
                     <thead>
                         <tr>
                             <th>Feeling</th>

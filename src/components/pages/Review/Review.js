@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 // MATERIAL-UI
 import Button from '@material-ui/core/Button';
 //REDUX
@@ -6,6 +7,28 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class Review extends Component {
+
+    submit = () => {
+        alert('Click Ok to confirm submit');
+        this.postFeedback(this.props.store.formReducer);
+    }
+
+    postFeedback(newFeedback) {
+        axios({
+            method: 'POST',
+            url: '/api/feedback',
+            data: newFeedback
+          })
+            .then((response) => {
+              alert('feedback submitted!');
+              this.props.history.push('/thankYou');
+            })
+            .catch((err) => {
+              alert('Hey sorry, something went terribly wrong')
+              console.log(err);
+            });
+    }
+
     render() {
         return (
             <div className="App">
@@ -19,7 +42,7 @@ class Review extends Component {
             <p>Support:{this.props.store.formReducer.support}</p>
             <p>Comments:{this.props.store.formReducer.comments}</p>
             <br />
-            <Button variant="contained" color="primary">Submit</Button>
+            <Button variant="contained" color="primary" onClick={this.submit}>Submit</Button>
           </div>
         );
     }
