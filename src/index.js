@@ -31,6 +31,16 @@ const formReducer = (state = defaultState, action) => {
             ...state,
             ...action.payload
         }
+    } else if (action.type === 'ADD_UNDERSTANDING') {
+        return {
+            ...state,
+            ...action.payload
+        }
+    }else if (action.type === 'ADD_SUPPORT') {
+        return {
+            ...state,
+            ...action.payload
+        }
     }
     return state;
 }
