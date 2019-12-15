@@ -18,7 +18,7 @@ class Home extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <br />
-        <Button variant="contained" color="primary" onClick={this.startFeedback}>Leave New Feedback</Button>
+        <Button variant="contained" color="primary" onClick={this.startFeedback}>Start Feedback</Button>
       </div>
     );
   }

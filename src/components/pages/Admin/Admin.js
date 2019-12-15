@@ -51,6 +51,20 @@ class Admin extends Component {
             })
     }
 
+    setFlag = (id, status) => {
+        axios({
+          method: 'PUT',
+          url: '/api/feedback/' + id,
+          data: {status},
+        })
+          .then((response) => {
+            this.getFeedback();
+          })
+          .catch((err) => {
+            console.warn(err);
+          })
+      }
+
     render() {
         //map feedbackReducer and display all feedback on admin
         const feedbackArr = this.props.store.feedbackReducer.map((item, index) => {
@@ -66,6 +80,7 @@ class Admin extends Component {
                         <Button
                             variant="contained"
                             color="secondary"
+                            onClick={() => this.setFlag(item.id, item.flagged)}
                         >
                             Flag
                                 </Button>

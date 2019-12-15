@@ -7,7 +7,7 @@ const pool = require('../modules/pool');
 // GET all submits that have been placed, populate with data from the feedback database
 router.get('/', (req, res) => {
     // Find all feedbacks and return them
-    pool.query('SELECT * FROM "feedback";')
+    pool.query('SELECT * FROM "feedback" ORDER BY "id" DESC')
         .then((result) => {
             res.send(result.rows);
         })
@@ -42,6 +42,31 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(200);
         }).catch((error) => {
             console.log('Error DELETE /api/feedback', error);
+            res.sendStatus(500);
+        })
+});
+
+//PUT call to update flag from admin page
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    const status = req.body.status;
+    console.log(status, id);
+    let update;
+
+    if (status == "false") {
+        update = `true`;
+    } else if (status == "true") {
+        update = `false`;
+    }
+
+    let queryString = `UPDATE "feedback" SET "flagged"='${update}' WHERE "id" = $1;`;
+
+    pool.query(queryString, [id])
+        .then((response) => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log(err);
             res.sendStatus(500);
         })
 });
