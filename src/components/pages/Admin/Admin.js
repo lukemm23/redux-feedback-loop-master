@@ -6,6 +6,11 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // MATERIAL-UI
 import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 class Admin extends Component {
 
@@ -50,20 +55,30 @@ class Admin extends Component {
         //map feedbackReducer and display all feedback on admin
         const feedbackArr = this.props.store.feedbackReducer.map((item, index) => {
             return (
-                <tr key={index}>
-                    <td>{item.feeling}</td>
-                    <td>{item.understanding}</td>
-                    <td>{item.support}</td>
-                    <td>{item.comments}</td>
-                    <td>
+                <TableRow key={index}>
+                    <TableCell align="center">{item.feeling}</TableCell>
+                    <TableCell align="center">{item.understanding}</TableCell>
+                    <TableCell align="center">{item.support}</TableCell>
+                    <TableCell align="center">{item.comments}</TableCell>
+                    <TableCell align="center">{item.date}</TableCell>
+                    <TableCell align="center">{item.flagged}</TableCell>
+                    <TableCell align="center">
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                        >
+                            Flag
+                                </Button>
+                    </TableCell>
+                    <TableCell align="center">
                         <Button
                             variant="contained"
                             color="primary"
                             onClick={(event) => this.deleteFB(event, item.id)}>
                             Delete
-                        </Button>
-                    </td>
-                </tr>
+                                </Button>
+                    </TableCell>
+                </TableRow>
             )
         });
         return (
@@ -74,20 +89,23 @@ class Admin extends Component {
                 </header>
                 <br />
                 <h1>Feedback Results</h1>
-                <table className="App">
-                    <thead>
-                        <tr>
-                            <th>Feeling</th>
-                            <th>Comprehension</th>
-                            <th>Support</th>
-                            <th>Comments</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Table className="App" aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="center">Feeling</TableCell>
+                            <TableCell align="center">Comprehension</TableCell>
+                            <TableCell align="center">Support</TableCell>
+                            <TableCell align="center">Comments</TableCell>
+                            <TableCell align="center">Date</TableCell>
+                            <TableCell align="center">Flagged</TableCell>
+                            <TableCell align="center">Flag</TableCell>
+                            <TableCell align="center">Delete</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {feedbackArr}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
 
             </div>
         );
