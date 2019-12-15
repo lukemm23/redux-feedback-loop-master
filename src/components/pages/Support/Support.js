@@ -20,12 +20,16 @@ class Support extends Component {
 
     //dispatch support to formReducer
     submit = (event) => {
+        if(!this.state.support) {
+            alert('please enter rating');
+        }else {
         this.props.dispatch({
             type: 'ADD_SUPPORT',
             payload: this.state,
         });
         this.props.history.push('/comments');
     }
+}
 
     render() {
         return (

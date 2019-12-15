@@ -25,6 +25,7 @@ class Comments extends Component {
             payload: this.state,
         });
         this.props.history.push('/review');
+
     }
 
     render() {

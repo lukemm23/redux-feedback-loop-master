@@ -20,12 +20,16 @@ class Feeling extends Component {
 
     //dispatch feeling to formReducer
     submit = (event) => {
-        this.props.dispatch({
-            type: 'ADD_FEELING',
-            payload: this.state,
-        });
+        if (!this.state.feeling) {
+            alert('please enter rating');
+        } else {
+            this.props.dispatch({
+                type: 'ADD_FEELING',
+                payload: this.state,
+            });
 
-        this.props.history.push('/understanding');
+            this.props.history.push('/understanding');
+        }
     }
 
     render() {

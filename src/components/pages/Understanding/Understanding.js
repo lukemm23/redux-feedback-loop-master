@@ -20,11 +20,15 @@ class Understanding extends Component {
 
     //dispatch understanding to formReducer
     submit = (event) => {
-        this.props.dispatch({
-            type: 'ADD_UNDERSTANDING',
-            payload: this.state,
-        });
-        this.props.history.push('/support');
+        if (!this.state.understanding) {
+            alert('please enter rating');
+        } else {
+            this.props.dispatch({
+                type: 'ADD_UNDERSTANDING',
+                payload: this.state,
+            });
+            this.props.history.push('/support');
+        }
     }
 
     render() {
