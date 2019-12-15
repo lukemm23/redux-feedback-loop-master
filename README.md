@@ -31,4 +31,6 @@ This is a weekend solo project that created a full stack web page with react, re
 3. POST request to add new feedbacks into database.
 4. PUT request to update flagged status to database.
 
+
+deployed to heroku: https://morning-depths-33910.herokuapp.com
 email me for any other questions @ lukemm23@gmail.com
