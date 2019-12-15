@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 // MATERIAL-UI
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import FormLabel from '@material-ui/core/FormLabel';
+//REDUX CONNECT
 import { connect } from 'react-redux';
 
 class Comments extends Component {
@@ -37,10 +40,20 @@ class Comments extends Component {
                 </header>
                 <h1>Any comments you want to leave?</h1>
                 <br />
-                <label> Comments "Insert number from 1-5"
-            <input type="text" onChange={(event) => this.changeField(event, 'comments')} />
-                </label>
-                <Button variant="contained" color="primary" onClick={this.submit}>Next</Button>
+                <form noValidate autoComplete="off">
+                    <FormLabel component="legend">Comments?</FormLabel>
+                    <br></br>
+                    <TextField
+                        id="standard-basic"
+                        label="Enter Comments Here"
+                        type="text"
+                        onChange={(event) => this.changeField(event, 'comments')}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.submit}>Next</Button>
+                </form>
             </div>
         );
     }

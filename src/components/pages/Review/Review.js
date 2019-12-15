@@ -38,10 +38,10 @@ class Review extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <h1> Review Your Feedback</h1>
-        <p>Feelings:{this.props.store.formReducer.feeling}</p>
-        <p>Understanding:{this.props.store.formReducer.understanding}</p>
-        <p>Support:{this.props.store.formReducer.support}</p>
-        <p>Comments:{this.props.store.formReducer.comments}</p>
+        <p>Feelings: {this.props.store.formReducer.feeling}</p>
+        <p>Understanding: {this.props.store.formReducer.understanding}</p>
+        <p>Support: {this.props.store.formReducer.support}</p>
+        <p>Comments: {this.props.store.formReducer.comments}</p>
         <br />
         <Button variant="contained" color="primary" onClick={this.submit}>Submit</Button>
       </div>

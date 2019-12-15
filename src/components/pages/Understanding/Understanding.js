@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 // MATERIAL-UI
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import FormLabel from '@material-ui/core/FormLabel';
+//REDUX CONNECT
 import { connect } from 'react-redux';
 
 class Understanding extends Component {
@@ -40,13 +43,24 @@ class Understanding extends Component {
                 </header>
                 <h1>How well are you understanding the content?</h1>
                 <br />
-                <label> Understanding? "Insert number from 1-5"
-            <input type="number" onChange={(event) => this.changeField(event, 'understanding')} />
-                </label>
-                <Button variant="contained" color="primary" onClick={this.submit}>Next</Button>
+                <form noValidate autoComplete="off">
+                    <FormLabel component="legend">Understanding?</FormLabel>
+                    <br></br>
+                    <TextField
+                        id="standard-basic"
+                        label="Enter Rating 1-5"
+                        type="number"
+                        onChange={(event) => this.changeField(event, 'understanding')}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.submit}>Next</Button>
+                </form>
             </div>
         );
     }
 }
 
 export default connect()(Understanding);
+
